@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar System Animation</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: twinkling ease-in-out infinite;
+        }
+
+        .solar-system {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 1200px;
+            height: 1200px;
+        }
+
+        .sun {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: yellow;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 30px 15px yellow;
+            z-index: 2;
+        }
+
+        .orbit {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform-origin: center;
+            animation: orbit-animation infinite linear;
+        }
+
+        .planet {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: blue;
+            border-radius: 50%;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: planet-spin 8s infinite linear;
+        }
+
+        @keyframes orbit-animation {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes planet-spin {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        @keyframes twinkling {
+            0% {
+                opacity: 0.1;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0.1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="solar-system">
+        <div class="sun"></div>
+        
+        <!-- Planets with their respective orbits -->
+        <div class="orbit" style="width: 200px; height: 200px; margin-left: -100px; margin-top: -100px; animation-duration: 10s">
+            <div class="planet" style="background: #ff4500;"></div>
+        </div>
+        <div class="orbit" style="width: 280px; height: 280px; margin-left: -140px; margin-top: -140px; animation-duration: 14s">
+            <div class="planet" style="background: #ff6347;"></div>
+        </div>
+        <div class="orbit" style="width: 360px; height: 360px; margin-left: -180px; margin-top: -180px; animation-duration: 18s">
+            <div class="planet" style="background: #ffa500;"></div>
+        </div>
+        <div class="orbit" style="width: 440px; height: 440px; margin-left: -220px; margin-top: -220px; animation-duration: 22s">
+            <div class="planet" style="background: #9acd32;"></div>
+        </div>
+        <div class="orbit" style="width: 520px; height: 520px; margin-left: -260px; margin-top: -260px; animation-duration: 26s">
+            <div class="planet" style="background: #32cd32;"></div>
+        </div>
+        <div class="orbit" style="width: 600px; height: 600px; margin-left: -300px; margin-top: -300px; animation-duration: 30s">
+            <div class="planet" style="background: #00ced1;"></div>
+        </div>
+        <div class="orbit" style="width: 680px; height: 680px; margin-left: -340px; margin-top: -340px; animation-duration: 34s">
+            <div class="planet" style="background: #4682b4;"></div>
+        </div>
+        <div class="orbit" style="width: 760px; height: 760px; margin-left: -380px; margin-top: -380px; animation-duration: 38s">
+            <div class="planet" style="background: #8a2be2;"></div>
+        </div>
+        <div class="orbit" style="width: 840px; height: 840px; margin-left: -420px; margin-top: -420px; animation-duration: 42s">
+            <div class="planet" style="background: #ff69b4;"></div>
+        </div>
+    </div>
+
+    <script>
+        const stars = document.querySelector('.stars');
+        const numberOfStars = 200;
+        
+        // Create random stars for the background
+        for (let i = 0; i < numberOfStars; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            star.style.top = `${Math.random() * 100}vh`;
+            star.style.left = `${Math.random() * 100}vw`;
+            star.style.animationDuration = `${Math.random() * 5 + 3}s`;
+            star.style.animationDelay = `${Math.random() * 5}s`;
+            stars.appendChild(star);
+        }
+    </script>
+</body>
+</html>
